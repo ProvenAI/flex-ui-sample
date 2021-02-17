@@ -1,7 +1,7 @@
 import React from "react";
 import * as Flex from "@twilio/flex-ui";
 
-Flex.TaskCanvasHeader.defaultProps.ActionsComponent = () => null;
+// Flex.TaskCanvasHeader.defaultProps.ActionsComponent = () => null;
 
 class App extends React.Component {
   render() {
