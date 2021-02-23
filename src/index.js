@@ -9,25 +9,21 @@ import registerServiceWorker from "./registerServiceWorker";
 const mountNode = document.getElementById("root");
 
 window.onload = () => {
-  const predefinedConfig = window.appConfig || {};
-
   const configuration = {
-    ...predefinedConfig,
+    sso: {
+      accountSid: process.env.REACT_APP_ACCOUNT_SID,
+    },
   };
 
-  Flex
-    .progress(mountNode)
+  Flex.progress(mountNode)
     .provideLoginInfo(configuration, mountNode)
     .then(() => Flex.Manager.create(configuration))
-    .then(manager => renderApp(manager))
-    .catch(error => handleError(error));
+    .then((manager) => renderApp(manager))
+    .catch((error) => handleError(error));
 };
 
 function renderApp(manager) {
-  ReactDOM.render(
-    <App manager={manager} />,
-    mountNode
-  );
+  ReactDOM.render(<App manager={manager} />, mountNode);
 }
 
 function handleError(error) {
